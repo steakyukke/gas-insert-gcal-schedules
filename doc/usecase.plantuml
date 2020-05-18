@@ -1,0 +1,17 @@
+@startuml Usecase
+
+left to right direction
+actor 作業者
+
+rectangle {
+  作業者 --> (カレンダーマスターを取得する)
+  note right :<マクロ実行>\nGooglカレンダーから取得し、\nSpreadsheetの特定のシートに出力
+  作業者 --> (スケジュール登録用シートの作成)
+  note right :<Spreadsheetで手入力>\n1日の計画を立てる。
+  作業者 --> (スケジュールを登録する)
+  note right :<マクロ実行>\n作成したシートからGoogleカレンダーにイベント登録。
+  作業者 --> (スケジュールを削除する)
+  note right :<マクロ実行>\n指定日の全イベントをGoogleカレンダーから削除する。\n但し、自分がオーナーのカレンダーに限定する。
+}
+
+@enduml

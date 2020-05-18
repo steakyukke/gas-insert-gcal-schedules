@@ -1,0 +1,25 @@
+@startuml DomainModel
+
+package スケジュール <<Rectangle>> {
+  class スケジュール {
+    開始日時
+    終了日時
+    件名
+    カレンダーID
+    メモ
+  }
+  note right of スケジュール
+    - メモ以外は入力必須。
+    - 終日のスケジュールは作成しない。
+    - 日をまたぐスケジュールは作成しない。
+  end note
+
+  class カレンダー {
+    ID
+    カレンダー名
+  }
+}
+
+スケジュール "0..*" --> "1" カレンダー
+
+@enduml
