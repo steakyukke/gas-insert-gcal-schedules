@@ -23,6 +23,35 @@ global.onOpen = (): void => {
     .addToUi();
 };
 
+/**
+ * WebApiの呼び出し
+ */
+interface WebAppOnOpen
+  extends GoogleAppsScript.Events.AppsScriptHttpRequestEvent {
+  parameter: {
+    date: string | undefined;
+  };
+}
+global.doGet = (e: WebAppOnOpen): GoogleAppsScript.Content.TextOutput => {
+  const date = e.parameter.date;
+  let result: {
+    message: string;
+  };
+  if (date === 'today') {
+    result.message = '今日の日付で定形スケジュール登録';
+  } else if (date === 'tomorrow') {
+    result.message = '明日の日付で定形スケジュール登録';
+  } else {
+    result.message = '日付指定なしの為、登録なし';
+  }
+
+  let out = ContentService.createTextOutput();
+  out.setMimeType(ContentService.MimeType.JSON);
+  out.setContent(JSON.stringify(result));
+
+  return out;
+};
+
 // -----------------------------------------------------------------------------
 // メソッド
 // -----------------------------------------------------------------------------

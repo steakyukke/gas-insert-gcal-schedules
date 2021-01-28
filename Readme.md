@@ -20,7 +20,7 @@
 - `.clasp.json` を作成する。
 
 ## 実装時のメモ
-Javascript、Typescriptを勉強しながら実装。以下、覚書。
+JavaScript、TypeScriptを勉強しながら実装。以下、覚書。
 
 ### 型判定の方法
 🔗[JavaScriptの「型」の判定について - Qiita](https://qiita.com/south37/items/c8d20a069fcbfe4fce85)
@@ -72,15 +72,18 @@ Note: If --lib is not specified a default list of libraries are injected. The de
 
 - GASではES6のimport、exportの表記使えないので、1ファイルにする必要がある。
   →webpackの導入。
-- webpackではトップレベルで関数宣言をする必要がある。しかし、 Webpack で 1 ファイルにバンドルすると Webpack の関数スコープに閉じ込められてしまい global から参照出来ない形で出力されてしまう。
+- webpackではトップレベルで関数宣言をする必要がある。しかし、 webpackで1ファイルにバンドルするとwebpackの関数スコープに閉じ込められてしまいglobalから参照出来ない形で出力されてしまう。
   →プラグインの導入
   - gas-webpack-plugin
   - es3ify-webpack-plugin
-- tsファイルでは、globalオブジェクトに関数追加する実装に変更する。
+- tsファイルでは、globalオブジェクトに関数追加する実装へ変更する。
 - 参考サイトに載っていた、watchモードもついでに導入。
 
 ### 所感
-- 学習中のDDD(オニオンアーキテクチャ)、Typescriptで開発したかった。
-  データベースを利用しない実装の為、ドメイン(エンティティ)の部分を無理やり作った感あり。
-- ESLint、特にフォーマッターのPretterの理解が不十分な為、今後の課題。
+- 学習中のDDD（オニオンアーキテクチャ）、TypeScriptで開発したかった。
+  データベースを利用しない実装の為、ドメイン（エンティティ）の部分を無理やり作った感あり。
+- ESLint、とくにフォーマッターのPretterの理解が不十分な為、今後の課題。
 - Jestでユニットテストしたかったが、作業時間の都合で割愛。別ツール開発時に試す。
+
+### (2021/01/28) WebApi化
+- Today、Tomorrow指定で「メイン」シートのスケジュールを登録できるようにする。
